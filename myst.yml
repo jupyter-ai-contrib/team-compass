@@ -23,6 +23,7 @@ project:
       children:
         - pattern: "meeting-notes/**/*.md"
           hidden: true
+    - file: "governance.md"
 
 site:
   template: "book-theme"
