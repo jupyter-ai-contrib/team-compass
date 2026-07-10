@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  title: "Jupyter AI Team Compass"
+  description: "Where community members new and old align on objectives and practices"
+  github: &repo-url "https://github.com/jupyter-ai-contrib/team-compass"
+  license: "MIT"
+  plugins:
+    - "https://github.com/myst-contrib/myst-listing/releases/download/v0.1.3/plugin.mjs"
+    - "https://raw.githubusercontent.com/mfisher87/mystmd-plugin-emoji-shortcodes/refs/heads/main/emoji-shortcodes.mjs"
+  exclude:
+    - "_*"
+    - "README.md"
+  error_rules:
+    - rule: "link-resolves"
+      keys:
+        - "https://github.com/**"  # Rate limit too low (60 per hour) for link checking :(
+      severity: "warn"
+
+  toc:
+    - file: "index.md"
+    - file: "meeting-notes/index.md"
+      children:
+        - pattern: "meeting-notes/**/*.md"
+          hidden: true
+
+site:
+  template: "book-theme"
+  nav: []
+  actions:
+    - title: "View source"
+      url: *repo-url
+  options:
+    folders: true
+    style: "assets/styles/style.css"
+    # favicon: favicon.ico
+    # logo: site_logo.png
+    logo_text: "Jupyter AI Team Compass"
